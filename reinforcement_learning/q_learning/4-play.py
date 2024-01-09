@@ -6,6 +6,7 @@ Agent to perform an episode."""
 import numpy as np
 import gym
 
+
 def play(env, Q, max_steps=100):
     """Function Play that has the trained
      agent play an episode.
@@ -31,16 +32,15 @@ def play(env, Q, max_steps=100):
       env.render()
 
       # action chosen using qtable
-      action = np.agrmax(Q[state, :])
+      action = np.argmax(Q[state, :])
 
       # next action taken
-      next_state, reward, done, _ = env.step(action)
-
+      new_state, reward, done, info  = env.step(action)
       # update total rewards
       total_rewards += reward
 
       # next state
-      state = next_state
+      state = new_state
 
       # checking if complete
       if done:
@@ -51,19 +51,17 @@ def play(env, Q, max_steps=100):
 
     return total_rewards
 
-    if __name__ == '__main__':
+def main():
+    load_frozen_lake = __import__('0-load_env').load_frozen_lake
+    q_init = __import__('1-q_init').q_init
+    train = __import__('3-q_learning').train
+    play = __import__('4-play').play
+    np.random.seed(0)
+    desc = [['S', 'F', 'F'], ['F', 'H', 'H'], ['F', 'F', 'G']]
+    env = gym.make("FrozenLake-v1", desc=desc, render_mode='human')
+    Q = np.zeros((env.observation_space.n, env.action_space.n))
+    Q, total_rewards = train(env, Q)
+    print(play(env, Q))
 
-      load_frozen_lake = __import__('0-load_env').load_frozen_lake
-      q_init = __import__('1-q_init').q_init
-      train = __import__('3-q_learning').train
-      play = __import__('4-play').play
-
-      import numpy as np
-
-      np.random.seed(0)
-      desc = [['S', 'F', 'F'], ['F', 'H', 'H'], ['F', 'F', 'G']]
-      env = load_frozen_lake(desc=desc)
-      Q = q_init(env)
-
-      Q, total_rewards  = train(env, Q)
-      print(play(env, Q))
+if __name__ == '__main__':
+    main()
