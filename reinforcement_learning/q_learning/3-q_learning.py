@@ -46,12 +46,10 @@ def train(env, Q, episodes=5000, max_steps=100, alpha=0.1,
             else:
                 action = env.action_space.sample()
 
-            new_state, reward, done, info = env.step(action)
+            new_state, reward, done, _ = (env.step(action)[:4])
 
             # Update Q-table for Q(s,a)
-            Q[state, action] = (
-                Q[state, action
-                 ] * (1 - alpha) + alpha * (reward + gamma * np.max(Q[new_state, :])))
+            Q[state, action] = (Q[state, action] * (1 - alpha) + alpha * (reward + gamma * np.max(Q[new_state, :])))
             # set current state to new state
             state = new_state
             current_rewards += reward 
