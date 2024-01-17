@@ -24,4 +24,23 @@ def monte_carlo(env, V, policy, episodes=5000,
     - gamma: is the discount rate
     Returns: V, the updated value estimate
     """
-    
+    # init v w/ zeros for all the states
+    V = np.zeros(env.nS)
+
+    # init empty list to store trajectory
+    trajectory = []
+
+    # init environment state
+    state = env.reset()
+
+    # select action based on current state
+    action = policy(state)
+
+    # observe next state and reward
+    next_state, reward, done, = env.step(action)
+
+    # append to trajectory list
+    trajectory.append((state, action, reward))
+
+    # update current state to next state
+    state = next_state
