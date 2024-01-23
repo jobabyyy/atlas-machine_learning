@@ -24,6 +24,6 @@ Returns: the environment
     """
     # init conditonals to check parameters
     env = gym.make('FrozenLake-v1', desc=desc, map_name=map_name,
-                   is_slippery=is_slippery)
+                   is_slippery=is_slippery, render_mode ='human')
 
     return env
