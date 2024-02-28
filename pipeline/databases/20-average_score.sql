@@ -7,8 +7,7 @@ BEGIN
     SELECT AVG(score) INTO avg_score
     FROM user_scores
     WHERE user_id = user_id;
-    IF EXISTS (SELECT 1 FROM user_average_scores WHERE user_id = user_id)
-        THEN
+    IF EXISTS (SELECT 1 FROM user_average_scores WHERE user_id = user_id) THEN
         UPDATE user_average_scores
         SET average_score = avg_score
         WHERE user_id = user_id;
