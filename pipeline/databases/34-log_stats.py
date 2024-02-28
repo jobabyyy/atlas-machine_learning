@@ -11,7 +11,7 @@ def nginx_logs_stats():
     """
     provide stats about Ngnix logs stored in MongoDB:
     """
-    client = MongoClient('mongodb://127.0.0.1:27017')
+    client = MongoClient('mongodb://localhost:27017/')
     logs_collection = client.logs.nginx
 
     total_logs = logs_collection.count_documents({})
