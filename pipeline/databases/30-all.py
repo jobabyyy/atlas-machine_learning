@@ -8,8 +8,8 @@ from pymongo import MongoClient
 
 
 def list_all(mongo_collection):
-    """ list all dics in the specified MongoDB collection.
+    """ list all docs in the specified MongoDB collection.
     """
     docs = list(mongo_collection.find())
 
-return docs
+    return docs
