@@ -16,7 +16,6 @@ def nginx_logs_stats():
     log_collection = db['nginx']
 
     total_logs = log_collection.count_documents({})
-
     print(f"first line: {total_logs} logs where {total_logs} is the number of documents in this log_collection")
 
     print("Methods:")
