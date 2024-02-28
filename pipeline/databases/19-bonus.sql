@@ -1,10 +1,12 @@
 -- stores procedure AddBonus that adds a new connection for a student
 DELIMITER $$
+
 CREATE PROCEDURE AddBonus(
-    IN user_id INT project_name VARCHAR(255),
+    IN user_id INT, 
+    IN project_name VARCHAR(255),
     IN score INT)
 BEGIN
-    DECLARE project_id INT;
+    DECLARE project_id INT DEFAULT NULL;
 
     SELECT id INTO project_id 
     FROM projects
@@ -17,7 +19,7 @@ BEGIN
     END IF;
 
     INSERT INTO corrections (user_id, project_id, score)
-    VALUE (user_id, project_id, score);
+    VALUES (user_id, project_id, score);
 END$$
 
 DELIMITER ;
