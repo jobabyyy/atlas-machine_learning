@@ -12,4 +12,4 @@ def update_topics(mongo_client, name, topics):
     Updates the topics of a school doc  based on school name.
     """
 
-    update_collection({ "name": name }, { "$set": {"topics": topics} })
+    update_collection({"name": name}, {"$set": {"topics": topics}})
