@@ -5,7 +5,7 @@ CREATE PROCEDURE ComputeAverageScoreForUser(IN user_id INT)
 BEGIN
     DECLARE avg_score DECIMAL(10, 2);
     SELECT AVG(score) INTO avg_score
-    FROM user_scores
+    FROM corrections
     WHERE user_id = user_id;
     IF EXISTS (SELECT 1 FROM user_average_scores WHERE user_id = user_id) THEN
         UPDATE user_average_scores
