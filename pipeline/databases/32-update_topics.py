@@ -12,4 +12,7 @@ def update_topics(mongo_collection, name, topics):
     Update the topics of a school doc  based on school name.
     """
 
-    update_collection.update_many({"name": name}, {"$set": {"topics": topics}})
+    output = update_collection.update_many(
+        {"name": name}, {"$set": {"name": name, "topics": topics}})
+
+    return output
