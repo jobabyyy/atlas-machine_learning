@@ -5,7 +5,7 @@ Hadoop: Download files from HDFS.
 
 
 from snakebite.client import Client
-import os
+
 
 
 
