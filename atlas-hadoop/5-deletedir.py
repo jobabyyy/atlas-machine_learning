@@ -1,11 +1,7 @@
-#!/usr/bin/python2.7
-"""
-Hadoop: Deletes Directories.
-"""
+#!/usr/bin/env python2.7
 
 
 from snakebite.client import Client
-
 
 
 def deletedir(l):
@@ -20,10 +16,11 @@ def deletedir(l):
     client = Client("localhost", 9000)
 
     # removing the directories
-    for direct_path in l:
-        client.rmdir([direct_path], recursive=True)
-
-
+    try:
+        for direct_path in client.delete(l, recurse=True):
+            print(direct_path)
+    except Exception:
+        pass
 
 if __name__ == "__main__":
     l = ["/Betty", "/Betty/Holberton"]
