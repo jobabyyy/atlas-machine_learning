@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/env python2.7
 """
 Hadoop: Create Directories.
 """
@@ -17,12 +17,10 @@ def createdir(l):
     Returns:
         None
     """
-    client = Client("localhost", 9000)
-
-    # create directories
+    client = Client('localhost', 9000)
     for dir_path in l:
-        client.mkdir([dir_path], create_parent=True)
-
+        result = client.mkdir([dir_path], create_parent=True)
+        print({'path': dir_path, 'result': next(result)['result']})
 
 if __name__ == "__main__":
     l = ["/Betty", "/Betty/Holberton"]
