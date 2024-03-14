@@ -20,13 +20,5 @@ def download(file_list):
     """
     client = Client('localhost', 9000)
 
-        for file_path in client.copyToLocal(l, '/tmp'):
-            print(file_path)
-
-
-
-if __name__ == "__main__":
-    l = ["/holbies/input/lao.txt"]
-    download(l)
-    with open("/tmp/lao.txt", "r") as f:
-        print(f.read())
+    for file_path in client.copyToLocal(l, '/tmp'):
+        print(file_path)
