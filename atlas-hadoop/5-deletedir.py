@@ -1,6 +1,4 @@
 #!/usr/bin/env python2.7
-
-
 from snakebite.client import Client
 
 

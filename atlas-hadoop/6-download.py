@@ -18,18 +18,10 @@ def download(file_list):
 
     Returns: None
     """
-    # initialize snakebite client
-    client = Client("localhost", 9000)
+    client = Client('localhost', 9000)
 
-    # iterate over each file(s) path in the list
-    for file_path in file_list:
-        # extract file name from the path
-        file_name = os.path.basename(file_path)
-
-        # download the file from HDFS
-        with open(f"/tmp/{file_name}", "wb") as f:
-            for chunk in client.cat([file_path]):
-                f.write(chunk)
+        for file_path in client.copyToLocal(l, '/tmp'):
+            print(file_path)
 
 
 
