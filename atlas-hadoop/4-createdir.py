@@ -1,9 +1,8 @@
 #!/usr/bin/python2.7
-
-
 """
 Hadoop: Create Directories.
 """
+
 
 from snakebite.client import Client
 
